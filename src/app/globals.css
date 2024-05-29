@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply mx-auto w-[90rem] max-w-[90%] h-screen dark:bg-zinc-600;
+}
