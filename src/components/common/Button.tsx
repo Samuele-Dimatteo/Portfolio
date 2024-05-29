@@ -1,14 +1,28 @@
 import { ReactNode, ReactElement } from 'react';
 
+enum Size {
+  'sm' = 'p-1',
+  'md' = 'p-2',
+  'lg' = 'p-3',
+  'xl' = 'p-4',
+}
+
+enum Color {
+  'forground' = '#FFFF00'
+}
+
+enum Variant {
+  'solid' = ''
+}
+
 interface ButtonProps {
-  size?: 'sm' | 'md' | 'lg' | 'xl';
-  color?: string;
-  isFilled?: boolean;
-  action: () => void;
+  size?: Size;
+  color?: Color | string;
+  variant?: 'solid' | 'bordered';
   children: ReactNode;
 }
 
-const Button = ({ size = 'md', color = 'black', isFilled = false, action, children }: ButtonProps): ReactElement => {
+const Button = ({ size = 'md', color = 'black', variant = 'solid', children }: ButtonProps): ReactElement => {
   const className = `
     ${size === 'sm' ? 'text-sm' : ''}
     ${size === 'md' ? 'text-md' : ''}
@@ -19,7 +33,7 @@ const Button = ({ size = 'md', color = 'black', isFilled = false, action, childr
   `;
 
   return (
-    <button className={className} onClick={action}>
+    <button className={'border'} onClick={action}>
       {children}
     </button>
   );

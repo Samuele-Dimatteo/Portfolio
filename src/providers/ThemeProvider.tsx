@@ -2,6 +2,8 @@
 
 import { ReactNode, createContext, useContext, useState, useEffect } from 'react';
 
+type Theme = 'dark' | 'light';
+
 interface ContextProps {
   theme: Theme;
   setTheme: (theme: Theme) => void;
@@ -11,8 +13,6 @@ interface ProviderProps {
   defaultTheme?: Theme;
   children: ReactNode;
 }
-
-type Theme = 'dark' | 'light';
 
 export const ThemeContext = createContext<ContextProps | null>(null);
 
