@@ -1,6 +1,8 @@
 import { ReactElement } from 'react';
 import { IconMoon, IconSun } from '@tabler/icons-react';
 import { useTheme } from '@/providers/ThemeProvider';
+import Button from '@/components/common/Button';
+import Link from '@/components/common/Link';
 
 const Navbar = (): ReactElement => {
   const { theme, setTheme } = useTheme();
@@ -9,17 +11,17 @@ const Navbar = (): ReactElement => {
 
   return (
     <nav className="flex justify-between items-center p-4 mt-4 w-full rounded-lg bg-zinc-800">
-      <a className="text-white text-xl font-extrabold uppercase" href="/">
+      <Link href='/' size='lg' underline='none'>
         Samuele Dimatteo
-      </a>
+      </Link>
       <ul className="flex gap-8 text-white text-sm font-semibold uppercase">
         {itemList.map((item, idx) => (
           <li key={idx}>{item}</li>
         ))}
       </ul>
-      <button className="p-1.5 border-2 border-white rounded-" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
+      <Button size='sm' variant='bordered' radius='md' onPress={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
         {theme === 'dark' ? <IconSun size={20} color="#FFFFFF" /> : <IconMoon size={20} color="#FFFFFF" />}
-      </button>
+      </Button>
     </nav>
   );
 };

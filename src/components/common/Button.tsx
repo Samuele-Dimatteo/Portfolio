@@ -1,39 +1,42 @@
-import { ReactNode, ReactElement } from 'react';
-
-enum Size {
-  'sm' = 'p-1',
-  'md' = 'p-2',
-  'lg' = 'p-3',
-  'xl' = 'p-4',
-}
-
-enum Color {
-  'forground' = '#FFFF00'
-}
-
-enum Variant {
-  'solid' = ''
-}
+import React, { ReactNode, ReactElement } from 'react';
 
 interface ButtonProps {
-  size?: Size;
-  color?: Color | string;
+  size?: 'sm' | 'md' | 'lg';
+  color?: 'foreground';
   variant?: 'solid' | 'bordered';
+  radius?: 'none' | 'sm' | 'md' | 'lg' | 'xl' | 'full';
+  isDisabled?: boolean;
+  onPress?: () => void;
   children: ReactNode;
 }
 
-const Button = ({ size = 'md', color = 'black', variant = 'solid', children }: ButtonProps): ReactElement => {
-  const className = `
-    ${size === 'sm' ? 'text-sm' : ''}
-    ${size === 'md' ? 'text-md' : ''}
-    ${size === 'lg' ? 'text-lg' : ''}
-    ${size === 'xl' ? 'text-xl' : ''}
-    ${color ? `bg-${color}` : 'bg-black'}
-    ${isFilled ? '' : 'border border-solid border-black'}
-  `;
+enum SizeButton {
+  'sm' = 'px-2 py-2 text-sm',
+  'md' = 'px-4 py-2 text-md',
+  'lg' = 'px-5 py-2 text-lg',
+}
 
+enum ColorButton {
+  'foreground' = 'bg-green-500',
+}
+
+enum VariantButton {
+  'solid' = '',
+  'bordered' = 'border-2 border-green-500 bg-transparent',
+}
+
+enum RadiusButton {
+  'none' = 'rounded-none',
+  'sm' = 'rounded-sm',
+  'md' = 'rounded-md',
+  'lg' = 'rounded-lg',
+  'xl' = 'rounded-xl',
+  'full' = 'rounded-full',
+}
+
+const Button = ({ size = 'md', color, variant = 'solid', radius = 'md', isDisabled = false, onPress, children }: ButtonProps): ReactElement => {  
   return (
-    <button className={'border'} onClick={action}>
+    <button className={`${SizeButton[size]} ${color && ColorButton[color]} ${VariantButton[variant]} ${RadiusButton[radius]}`} disabled={isDisabled} onClick={onPress}>
       {children}
     </button>
   );
