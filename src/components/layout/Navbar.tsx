@@ -1,8 +1,8 @@
 import { ReactElement } from 'react';
-import { IconMoon, IconSun } from '@tabler/icons-react';
 import { useTheme } from '@/providers/ThemeProvider';
-import Button from '@/components/common/Button';
 import Link from '@/components/common/Link';
+import Button from '@/components/common/Button';
+import { IconSun, IconMoon } from '@tabler/icons-react';
 
 const Navbar = (): ReactElement => {
   const { theme, setTheme } = useTheme();
@@ -10,8 +10,8 @@ const Navbar = (): ReactElement => {
   const itemList = ['About', 'Works', 'Contact'];
 
   return (
-    <nav className="flex justify-between items-center p-4 mt-4 w-full rounded-lg bg-zinc-800">
-      <Link href='/' size='lg' underline='none'>
+    <nav className='flex justify-between items-center py-4 px-8 bg-neutral-900'>
+      <Link href='/' size='lg' color='foreground' underline='none'>
         Samuele Dimatteo
       </Link>
       <ul className="flex gap-8 text-white text-sm font-semibold uppercase">
