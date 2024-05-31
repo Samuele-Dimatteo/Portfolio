@@ -11,7 +11,7 @@ const Navbar = (): ReactElement => {
 
   return (
     <nav className='flex justify-between items-center py-4 px-8 bg-neutral-900'>
-      <Link href='/' size='lg' color='foreground' underline='none'>
+      <Link href='/' size='xl' weight='bold' color='primary' underline='none'>
         Samuele Dimatteo
       </Link>
       <ul className="flex gap-8 text-white text-sm font-semibold uppercase">
