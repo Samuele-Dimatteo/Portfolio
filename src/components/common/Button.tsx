@@ -1,42 +1,41 @@
+import { ComponentSizes, TextWeights, ComponentColors, ComponentRadiues, TextColors } from '@/types/types';
 import React, { ReactNode, ReactElement } from 'react';
 
 interface ButtonProps {
-  size?: 'sm' | 'md' | 'lg';
-  color?: 'foreground';
-  variant?: 'solid' | 'bordered';
-  radius?: 'none' | 'sm' | 'md' | 'lg' | 'xl' | 'full';
+  size?: keyof typeof ComponentSizes;
+  bgColor?: keyof typeof ComponentColors;
+  variant?: keyof typeof VariantStyles;
+  radius?: keyof typeof ComponentRadiues;
+  txtWeight?: keyof typeof TextWeights;
+  txtColor?: keyof typeof TextColors;
+  isIconOnly?: boolean;
   isDisabled?: boolean;
   onPress?: () => void;
   children: ReactNode;
 }
 
-enum SizeButton {
-  'sm' = 'px-2 py-2 text-sm',
-  'md' = 'px-4 py-2 text-md',
-  'lg' = 'px-5 py-2 text-lg',
+enum VariantStyles {
+  'bordered' = 'border-2 border-black dark:border-white',
 }
 
-enum ColorButton {
-  'foreground' = 'bg-green-500',
-}
-
-enum VariantButton {
-  'solid' = '',
-  'bordered' = 'border-2 border-green-500 bg-transparent',
-}
-
-enum RadiusButton {
-  'none' = 'rounded-none',
-  'sm' = 'rounded-sm',
-  'md' = 'rounded-md',
-  'lg' = 'rounded-lg',
-  'xl' = 'rounded-xl',
-  'full' = 'rounded-full',
-}
-
-const Button = ({ size = 'md', color, variant = 'solid', radius = 'md', isDisabled = false, onPress, children }: ButtonProps): ReactElement => {  
+const Button = ({
+  size = 'md',
+  bgColor = 'foreground',
+  variant,
+  radius = 'md',
+  txtWeight = 'nr',
+  txtColor = 'foreground',
+  isIconOnly = false,
+  isDisabled = false,
+  onPress,
+  children,
+}: ButtonProps): ReactElement => {  
   return (
-    <button className={`${SizeButton[size]} ${color && ColorButton[color]} ${VariantButton[variant]} ${RadiusButton[radius]}`} disabled={isDisabled} onClick={onPress}>
+    <button 
+      className={`${isIconOnly || ComponentSizes[size]} ${(isIconOnly || variant) || ComponentColors[bgColor]} ${variant && VariantStyles[variant]} ${ComponentRadiues[radius]} ${TextWeights[txtWeight]} ${TextColors[txtColor]}`} 
+      disabled={isDisabled} 
+      onClick={onPress}
+    >
       {children}
     </button>
   );
