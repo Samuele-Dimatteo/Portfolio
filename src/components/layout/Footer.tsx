@@ -1,3 +1,5 @@
+// TODO Recrate this component from zero
+
 import { ReactElement } from 'react';
 import { IconBrandLinkedin, IconBrandGithub, IconBrandInstagram } from '@tabler/icons-react';
 

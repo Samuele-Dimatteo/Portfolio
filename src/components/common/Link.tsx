@@ -1,5 +1,7 @@
-import { TextSizes, TextWeights, TextColors } from '@/types/types';
-import { ReactNode, ReactElement } from 'react';
+// TODO Get a method for implement BorderColors in UnderlineStyles
+
+import { ReactNode, forwardRef, ReactElement } from 'react';
+import { TextSizes, TextWeights, TextColors, BorderColors } from '@/types/types';
 
 interface LinkProps {
   href: string;
@@ -8,6 +10,7 @@ interface LinkProps {
   weight?: keyof typeof TextWeights;
   color?: keyof typeof TextColors;
   underline?: keyof typeof UnderlineStyles;
+  customStyle?: string;
   children: ReactNode;
 }
 
@@ -16,24 +19,26 @@ enum UnderlineStyles {
   'always' = 'border-b-2 border-black dark:border-white',
 }
 
-const Link = ({
+const Link = forwardRef<HTMLAnchorElement, LinkProps>(({
   href,
   isExternal = false,
   size = 'bs',
   weight = 'nr',
   color = 'foreground',
   underline,
+  customStyle,
   children,
-}: LinkProps): ReactElement => {  
+}, ref): ReactElement => {  
   return (
-    <a 
+    <a
+      ref={ref}
       href={href} 
-      target={isExternal ? '_blank' : '_self'} 
-      className={`${TextSizes[size]} ${TextWeights[weight]} ${TextColors[color]} ${underline && UnderlineStyles[underline]}`}
+      target={isExternal ? '_blank' : '_self'}
+      className={`${TextSizes[size]} ${TextWeights[weight]} ${TextColors[color]} ${underline && UnderlineStyles[underline]} ${customStyle}`}
     >
       {children}
     </a>
   );
-};
+});
 
 export default Link;

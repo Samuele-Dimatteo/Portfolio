@@ -1,13 +1,13 @@
 export enum ComponentSizes {
-  'sm' = 'px-1.5 py-1.5',
-  'md' = 'px-1 py-1.5',
-  'lg' = 'px-1.5 py-1.5',
-  'xl' = 'px-2 py-2',
-  '2xl' = 'px-2.5 py-2.5',
+  'sm' = 'px-1.5 py-1',
+  'md' = 'px-2 py-1',
+  'lg' = 'px-3 py-2',
+  'xl' = 'px-4 py-2',
+  '2xl' = 'px-5 py-3',
 }
 
 export enum ComponentColors {
-  'foreground' = 'bg-white dark:bg-black',
+  'foreground' = 'bg-black dark:bg-white',
   'primary' = 'bg-orange-600 dark:bg-blue-900',
   'secondary' = 'bg-red-800 dark:bg-emerald-700',
 }
@@ -39,5 +39,11 @@ export enum TextWeights {
 export enum TextColors {
   'foreground' = 'text-black dark:text-white',
   'primary' = 'text-orange-600 dark:text-blue-900',
-  'secondary' = 'text-red-800 dark:text-emerald-700'
+  'secondary' = 'text-red-800 dark:text-emerald-700',
+}
+
+export enum BorderColors {
+  'foreground' = 'border-black dark:border-white',
+  'primary' = 'border-orange-600 dark:border-blue-900',
+  'secondary' = 'border-red-800 dark:border-emerald-700',
 }

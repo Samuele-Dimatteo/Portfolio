@@ -1,44 +1,49 @@
-import { ComponentSizes, TextWeights, ComponentColors, ComponentRadiues, TextColors } from '@/types/types';
-import React, { ReactNode, ReactElement } from 'react';
+import { ReactNode, forwardRef, ReactElement } from 'react';
+import { ComponentSizes, ComponentColors, BorderColors, ComponentRadiues, TextSizes, TextWeights, TextColors } from '@/types/types';
 
 interface ButtonProps {
   size?: keyof typeof ComponentSizes;
-  bgColor?: keyof typeof ComponentColors;
-  variant?: keyof typeof VariantStyles;
+  color?: keyof typeof ComponentColors;
+  variant?: keyof typeof ButtonStyle;
   radius?: keyof typeof ComponentRadiues;
+  txtSize?: keyof typeof  TextSizes;
   txtWeight?: keyof typeof TextWeights;
   txtColor?: keyof typeof TextColors;
+  customStyle?: string;
   isIconOnly?: boolean;
   isDisabled?: boolean;
   onPress?: () => void;
   children: ReactNode;
 }
 
-enum VariantStyles {
-  'bordered' = 'border-2 border-black dark:border-white',
+enum ButtonStyle {
+  'bordered' = 'border-b-2'
 }
 
-const Button = ({
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
   size = 'md',
-  bgColor = 'foreground',
+  color = 'foreground',
   variant,
   radius = 'md',
+  txtSize = 'bs',
   txtWeight = 'nr',
   txtColor = 'foreground',
+  customStyle,
   isIconOnly = false,
   isDisabled = false,
   onPress,
   children,
-}: ButtonProps): ReactElement => {  
+}, ref): ReactElement => {
   return (
     <button 
-      className={`${isIconOnly || ComponentSizes[size]} ${(isIconOnly || variant) || ComponentColors[bgColor]} ${variant && VariantStyles[variant]} ${ComponentRadiues[radius]} ${TextWeights[txtWeight]} ${TextColors[txtColor]}`} 
+      ref={ref}
+      className={`${isIconOnly || ComponentSizes[size]} ${(isIconOnly || variant) || ComponentColors[color]} ${variant && (ButtonStyle[variant] && BorderColors[color])} ${ComponentRadiues[radius]} ${TextSizes[txtSize]} ${TextWeights[txtWeight]} ${TextColors[txtColor]} ${customStyle}`} 
       disabled={isDisabled} 
       onClick={onPress}
     >
       {children}
     </button>
   );
-};
+});
 
 export default Button;

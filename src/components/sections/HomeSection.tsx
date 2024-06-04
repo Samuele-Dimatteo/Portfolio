@@ -1,17 +1,11 @@
-import { motion, useTransform, MotionValue } from 'framer-motion';
+import Text from '@/components/common/Text';
 
-interface HomeSectionProps {
-  scrollYProgress: MotionValue<number>;
-  index: number;
-}
-
-const HomeSection: React.FC<HomeSectionProps> = ({ scrollYProgress, index }) => {
-  const opacity = useTransform(scrollYProgress, [index / 4, (index + 1) / 4], [1, 0]);
-
+const HomeSection = () => {
   return (
-    <motion.section style={{ opacity }} className="h-screen flex items-center justify-center bg-blue-500">
-      <h1 className="text-5xl text-white">Home Section</h1>
-    </motion.section>
+    <section className="flex justify-between h-screen">
+      <Text textElement={'h1'} size='xl' weight='bd' color='foreground'>Hi, I'm Samuele Dimatteo</Text>
+      <Text textElement={'h3'} size='xl' weight='bd' color='foreground'>and I'm a Web Developer</Text>
+    </section>
   );
 };
 

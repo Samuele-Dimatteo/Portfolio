@@ -1,17 +1,10 @@
-import { motion, useTransform, MotionValue } from 'framer-motion';
+import Text from '@/components/common/Text';
 
-interface WorksSectionProps {
-  scrollYProgress: MotionValue<number>;
-  index: number;
-}
-
-const WorksSection: React.FC<WorksSectionProps> = ({ scrollYProgress, index }) => {
-  const opacity = useTransform(scrollYProgress, [(index - 1) / 4, index / 4, (index + 1) / 4], [0, 1, 0]);
-
+const WorksSection = () => {
   return (
-    <motion.section style={{ opacity }} className="h-screen flex items-center justify-center bg-red-500">
-      <h1 className="text-5xl text-white">Works Section</h1>
-    </motion.section>
+    <section className="flex justify-between h-screen">
+      <Text textElement={'span'} size='xl' weight='bd' color='foreground'>This is the Works Section</Text>
+    </section>
   );
 };
 
