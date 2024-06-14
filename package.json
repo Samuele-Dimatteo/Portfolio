@@ -10,14 +10,15 @@
     "start": "next start"
   },
   "dependencies": {
-    "@gsap/react": "^2.1.1",
-    "@react-three/drei": "^9.105.6",
-    "@react-three/fiber": "^8.16.6",
     "@tabler/icons-react": "^3.5.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
     "gsap": "^3.12.5",
     "next": "14.2.3",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-simple-typewriter": "^5.0.1",
+    "tailwind-merge": "^2.3.0"
   },
   "devDependencies": {
     "@types/node": "^20",

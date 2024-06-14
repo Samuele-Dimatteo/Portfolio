@@ -1,20 +1,19 @@
 import { ReactNode, ReactElement } from 'react';
-import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
-import { ThemeProvider } from '@/providers/ThemeProvider';
+import { Nunito } from 'next/font/google';
 import './globals.css';
 
 interface RootLayoutProps {
   children: ReactNode;
 }
 
-const inter = Inter({
+const nunito = Nunito({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800', '900']
+  weight: ['500', '600', '700', '800']
 });
 
 export const metadata: Metadata = {
-  title: "Samuele Dimatteo's - Homepage",
+  title: "Samuele Dimatteo - Portfolio",
   description: "Samuele Dimatteo's portfolio",
   icons: '/images/favicon.ico'
 };
@@ -22,10 +21,8 @@ export const metadata: Metadata = {
 const RootLayout = ({ children }: RootLayoutProps): ReactElement => {
   return (
     <html lang='en'>
-      <body className={inter.className}>
-        <ThemeProvider defaultTheme='dark'>
-          {children}
-        </ThemeProvider>
+      <body className={nunito.className}>
+        {children}
       </body>
     </html>
   );

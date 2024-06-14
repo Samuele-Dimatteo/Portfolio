@@ -1,5 +1,3 @@
-// TODO Make animation for Navbar and Main Components
-
 'use client'
 
 import { ReactElement } from 'react';

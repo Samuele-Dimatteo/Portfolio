@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 
-const AboutSection = (): ReactElement => {
+const WorksSection = (): ReactElement => {
   return (
     <section className=''>
       
@@ -8,4 +8,4 @@ const AboutSection = (): ReactElement => {
   );
 };
 
-export default AboutSection;
+export default WorksSection;

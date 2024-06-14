@@ -1,30 +1,20 @@
-import React, { ElementType, ReactNode, forwardRef, ReactElement } from 'react';
-import { TextSizes, TextWeights, TextColors } from '@/types/types';
+import { ElementType, HTMLAttributes, ReactNode, forwardRef, ReactElement } from 'react';
+import { VariantProps } from 'class-variance-authority';
+import { TextStyles } from '@/types';
+import mergeClasses from '@/utils/mergeClasses';
 
-interface TextProps {
-  textElement: ElementType;
-  size?: keyof typeof TextSizes;
-  weight?: keyof typeof TextWeights;
-  color?: keyof typeof TextColors;
-  customStyle?: string;
+interface TextProps extends HTMLAttributes<HTMLElement>, VariantProps<typeof TextStyles> {
+  elemType: ElementType;
   children: ReactNode;
 }
 
-const Text = forwardRef<HTMLHeadingElement, TextProps>(({
-  textElement: TextElement,
-  size = 'bs',
-  weight = 'nr',
-  color = 'foreground',
-  customStyle,
-  children,
-}, ref) => {  
+const Text = forwardRef<HTMLElement, TextProps>(({ elemType, cl, sz, wt, className, children, ...props }, ref): ReactElement => {
+  const Element = elemType
+
   return (
-    <TextElement
-      ref={ref}
-      className={`${TextSizes[size]} ${TextWeights[weight]} ${TextColors[color]} ${customStyle}`}
-    >
+    <Element ref={ref} className={mergeClasses(TextStyles({ cl, sz, wt, className }))} {...props}>
       {children}
-    </TextElement>
+    </Element>
   );
 });
 

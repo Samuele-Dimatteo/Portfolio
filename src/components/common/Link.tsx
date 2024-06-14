@@ -1,41 +1,15 @@
-// TODO Get a method for implement BorderColors in UnderlineStyles
+import { AnchorHTMLAttributes, ReactNode, forwardRef, ReactElement } from 'react';
+import { VariantProps } from 'class-variance-authority';
+import { TextStyles } from '@/types';
+import mergeClasses from '@/utils/mergeClasses';
 
-import { ReactNode, forwardRef, ReactElement } from 'react';
-import { TextSizes, TextWeights, TextColors, BorderColors } from '@/types/types';
-
-interface LinkProps {
-  href: string;
-  isExternal?: boolean;
-  size?: keyof typeof TextSizes;
-  weight?: keyof typeof TextWeights;
-  color?: keyof typeof TextColors;
-  underline?: keyof typeof UnderlineStyles;
-  customStyle?: string;
+interface LinkProps extends AnchorHTMLAttributes<HTMLAnchorElement>, VariantProps<typeof TextStyles> {
   children: ReactNode;
 }
 
-enum UnderlineStyles {
-  'hover' = 'hover:border-b-2 hover:border-black dark:hover:border-white',
-  'always' = 'border-b-2 border-black dark:border-white',
-}
-
-const Link = forwardRef<HTMLAnchorElement, LinkProps>(({
-  href,
-  isExternal = false,
-  size = 'bs',
-  weight = 'nr',
-  color = 'foreground',
-  underline,
-  customStyle,
-  children,
-}, ref): ReactElement => {  
+const Link = forwardRef<HTMLAnchorElement, LinkProps>(({ cl, sz, wt, className, children, ...props }, ref) => {
   return (
-    <a
-      ref={ref}
-      href={href} 
-      target={isExternal ? '_blank' : '_self'}
-      className={`${TextSizes[size]} ${TextWeights[weight]} ${TextColors[color]} ${underline && UnderlineStyles[underline]} ${customStyle}`}
-    >
+    <a ref={ref} className={mergeClasses(TextStyles({ cl, sz, wt, className }))} {...props}>
       {children}
     </a>
   );

@@ -1,37 +1,31 @@
-// TODO Recrate this component from zero
-
 import { ReactElement } from 'react';
 import { IconBrandLinkedin, IconBrandGithub, IconBrandInstagram } from '@tabler/icons-react';
+import Text from '@/components/common/Text';
+import Link from '@/components/common/Link';
 
 const Footer = (): ReactElement => {
-  const itemList = [
+  const itemsList = [
     {
-      icon: <IconBrandLinkedin size={20} color='#FFFFFF' />,
-      link: 'https://www.linkedin.com/in/samuele-dimatteo/',
+      icon: <IconBrandLinkedin size={20} />,
+      href: 'https://www.linkedin.com/in/samuele-dimatteo/',
     },
     {
-      icon: <IconBrandGithub size={20} color='#FFFFFF' />,
-      link: 'https://github.com/TheSmager',
+      icon: <IconBrandGithub size={20} />,
+      href: 'https://github.com/Samuele-Dimatteo',
     },
     {
-      icon: <IconBrandInstagram size={20} color='#FFFFFF' />,
-      link: 'http://instagram.com/samu_dima_',
+      icon: <IconBrandInstagram size={20} />,
+      href: 'http://instagram.com/samu_dima_',
     },
   ];
 
   return (
-    <footer>
-      <div className="flex justify-between items-center p-4 w-full rounded-lg bg-zinc-800">
-        <p className="text-white text-xs font-semibold">
-          © 2024 Samuele Dimatteo. All rights reserved.
-        </p>
-        <div className="flex gap-6">
-          {itemList.map((item, idx) => (
-            <a key={idx} href={item.link} aria-label={`Link to ${item.link}`}>
-              {item.icon}
-            </a>
-          ))}
-        </div>
+    <footer className='flex justify-between items-center pb-4 w-full'>
+      <Text elemType={'h1'} cl={'primary'} sz={'sm'} wt={'sb'}>Samuele Dimatteo 2024. All Rights Reserved</Text>
+      <div className='flex gap-10'>
+        {itemsList.map((item, idx) => (
+          <Link key={idx} href={item.href} target='_blank' cl={'primary'} wt={'sb'}>{item.icon}</Link>
+        ))}
       </div>
     </footer>
   );
