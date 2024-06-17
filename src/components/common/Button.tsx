@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes, ReactNode, forwardRef, ReactElement } from 'react';
 import { VariantProps } from 'class-variance-authority';
-import { ComponentStyles } from '@/types';
+import { ComponentStyles } from '@/components/common/styles';
 import mergeClasses from '@/utils/mergeClasses';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof ComponentStyles> {

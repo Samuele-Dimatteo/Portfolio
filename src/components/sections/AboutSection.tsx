@@ -2,8 +2,8 @@ import { ReactElement } from 'react';
 
 const AboutSection = (): ReactElement => {
   return (
-    <section className=''>
-      
+    <section className='h-screen'>
+      <h1>About Section</h1>
     </section>
   );
 };

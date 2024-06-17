@@ -1,6 +1,6 @@
 import { AnchorHTMLAttributes, ReactNode, forwardRef, ReactElement } from 'react';
 import { VariantProps } from 'class-variance-authority';
-import { TextStyles } from '@/types';
+import { TextStyles } from '@/components/common/styles';
 import mergeClasses from '@/utils/mergeClasses';
 
 interface LinkProps extends AnchorHTMLAttributes<HTMLAnchorElement>, VariantProps<typeof TextStyles> {

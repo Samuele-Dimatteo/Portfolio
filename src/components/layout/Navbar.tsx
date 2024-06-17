@@ -17,10 +17,10 @@ const Navbar = (): ReactElement => {
 
   return (
     <nav className='flex justify-between items-center pt-4 w-full'>
-      <Text elemType={'h1'} cl={'primary'} sz={'xl'} wt={'eb'}>Samuele Dimatteo</Text>
+      <Text elemType={'h1'} cl={'secondary'} sz={'xl'} wt={'eb'}>Samuele Dimatteo</Text>
       <div className='flex gap-10'>
         {itemsList.map((item, idx) => (
-          <Link key={idx} href={item.href} cl={'primary'} sz={'bs'} wt={'sb'}>{item.title}</Link>
+          <Link key={idx} href={item.href} cl={'secondary'} sz={'bs'} wt={'sb'}>{item.title}</Link>
         ))}
       </div>
     </nav>

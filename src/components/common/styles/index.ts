@@ -4,7 +4,7 @@ export const ComponentStyles = cva('', {
   variants: {
     bg: {
       primary: 'bg-[#F2F2F2]',
-      secondary: 'bg-[#000000]',
+      secondary: 'bg-[#0B0B0B]',
     },
     sz: {
       sm: 'px-2 py-1',

@@ -1,6 +1,6 @@
 import { ElementType, HTMLAttributes, ReactNode, forwardRef, ReactElement } from 'react';
 import { VariantProps } from 'class-variance-authority';
-import { TextStyles } from '@/types';
+import { TextStyles } from '@/components/common/styles';
 import mergeClasses from '@/utils/mergeClasses';
 
 interface TextProps extends HTMLAttributes<HTMLElement>, VariantProps<typeof TextStyles> {

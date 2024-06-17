@@ -1,11 +1,11 @@
 import { ReactElement } from 'react';
 
-const WorksSection = (): ReactElement => {
+const WorkSection = (): ReactElement => {
   return (
-    <section className=''>
-      
+    <section className='h-screen'>
+      <h1>Work Section</h1>
     </section>
   );
 };
 
-export default WorksSection;
+export default WorkSection;
