@@ -12,8 +12,12 @@
     "jsx": "preserve",
     "incremental": true,
     "skipLibCheck": true,
-    "plugins": [{ "name": "next" }],
-    "paths": { "@/*": ["./src/*"] }
+    "plugins": [
+      { "name": "next" }
+    ],
+    "paths": {
+      "@/*": ["./src/*"],
+    }
   },
   "include": ["**/*.tsx", "**/*.ts", "next-env.d.ts", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]

@@ -2,8 +2,6 @@
 
 import { ReactElement, useState } from 'react';
 import useResponsive from '@/hooks/useResponsive';
-import Text from '@/components/common/Text';
-import Link from '@/components/common/Link';
 
 const Navbar = (): ReactElement => {
   const { isMobile } = useResponsive();
@@ -17,10 +15,10 @@ const Navbar = (): ReactElement => {
 
   return (
     <nav className='flex justify-between items-center pt-4 w-full'>
-      <Text elemType={'h1'} cl={'secondary'} sz={'xl'} wt={'eb'}>Samuele Dimatteo</Text>
+      <h1 className='text-xl font-bold text-secondary'>Samuele Dimatteo</h1>
       <div className='flex gap-10'>
         {itemsList.map((item, idx) => (
-          <Link key={idx} href={item.href} cl={'secondary'} sz={'bs'} wt={'sb'}>{item.title}</Link>
+          <a key={idx} href={item.href} className='text-base text-secondary font-semibold'>{item.title}</a>
         ))}
       </div>
     </nav>

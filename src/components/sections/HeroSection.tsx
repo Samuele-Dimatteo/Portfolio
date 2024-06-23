@@ -1,29 +1,28 @@
+'use client';
+
+import useTextWriter from '@/hooks/useTextWriter';
 import { ReactElement } from 'react';
-import Text from '@/components/common/Text';
-import { Cursor, useTypewriter } from 'react-simple-typewriter';
 
 const HeroSection = (): ReactElement => {
-  const [changableWords] = useTypewriter({
+  const text = useTextWriter({
     words: ['CREATIVE', 'VERSATILE', 'INNOVATE'],
-    loop: 0,
     typeSpeed: 70,
-    deleteSpeed: 35,
-    delaySpeed: 3000,
-  })
+    erasingSpeed: 35,
+    delay: 3000,
+  });
 
   return (
     <section className='flex justify-center items-center h-screen'>
       <div>
-        <Text elemType={'h1'} cl={'secondary'} wt={'bd'} className='text-9xl'>
-          {changableWords}
-          <Cursor cursorStyle='|' />
-        </Text>
-        <Text elemType={'h1'} cl={'secondary'} wt={'bd'} className='text-9xl -ml-[6.125rem]'>
+        <h1 className='text-9xl font-bold text-secondary'>
+          {text}
+        </h1>
+        <h1 className='-ml-[6.125rem] text-9xl font-bold text-secondary'>
           DESIGNER
-        </Text>
-        <Text elemType={'h1'} cl={'secondary'} wt={'bd'} className='text-9xl'>
+        </h1>
+        <h1 className='text-9xl font-bold text-secondary'>
           DEVELOPER
-        </Text>
+        </h1>
       </div>
     </section>
   );

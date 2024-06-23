@@ -1,3 +1,5 @@
+'use client'
+
 import { ReactElement, useRef } from 'react';
 import { ShaderMaterial, Color } from 'three';
 import { shaderMaterial } from '@react-three/drei';
