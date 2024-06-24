@@ -36,7 +36,7 @@ const typewriterReducer = (state: TypewriterState, action: TypewriterAction): Ty
     case 'DELETE':
       return {
         ...state,
-        text: action.payload.substr(0, state.text.length - 1),
+        text: state.text.length > 1 ? action.payload.substr(0, state.text.length - 1) : '_',
         speed: action.speed,
         isTyping: false,
         isDeleting: true,
@@ -50,7 +50,7 @@ const typewriterReducer = (state: TypewriterState, action: TypewriterAction): Ty
       return {
         ...state,
         count: state.count + 1,
-        text: '',
+        text: '_',
         isTyping: false,
         isDeleting: false,
       };
@@ -61,7 +61,7 @@ const typewriterReducer = (state: TypewriterState, action: TypewriterAction): Ty
 
 const useTextWriter = ({ words, typeSpeed, erasingSpeed, delay }: TypewriterProps) => {
   const [{ text, count, speed, isTyping, isDeleting }, dispatch] = useReducer(typewriterReducer, {
-    text: '',
+    text: '_',
     count: 0,
     speed: typeSpeed,
     isTyping: false,
@@ -88,7 +88,7 @@ const useTextWriter = ({ words, typeSpeed, erasingSpeed, delay }: TypewriterProp
     } else {
       dispatch({ type: 'DELETE', payload: fullWord, speed: erasingSpeed });
 
-      if (text === '') {
+      if (text === '_') {
         dispatch({ type: 'COUNT' });
       }
     }

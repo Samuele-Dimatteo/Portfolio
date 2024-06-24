@@ -2,6 +2,7 @@ import { ReactNode, ReactElement } from 'react';
 import type { Metadata } from 'next';
 import { Nunito } from 'next/font/google';
 import './globals.css';
+import SmoothScroll from '@/components/common/SmoothScroll';
 
 interface RootLayoutProps {
   children: ReactNode;
@@ -22,7 +23,9 @@ const RootLayout = ({ children }: RootLayoutProps): ReactElement => {
   return (
     <html lang='en'>
       <body className={nunito.className}>
-        {children}
+        <SmoothScroll>
+          {children}
+        </SmoothScroll>
       </body>
     </html>
   );
