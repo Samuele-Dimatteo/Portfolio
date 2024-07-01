@@ -38,11 +38,10 @@ const Preloader = ({ children }: PreloaderProps): ReactElement => {
 
     if (idx === progressValues.length - 1) {
       gsap.to(preloaderRef.current, { 
-        y: '100%', 
-        display: 'none', 
-        delay: 0.75,
-        duration: 1, 
-        ease: 'power3.inOut', 
+        y: '100%',
+        duration: 1,
+        delay: 0.75, 
+        ease: 'power2.inOut', 
         onStart: () => setIsLoading(false), 
         onComplete: () => setAnimationCompl(true)
       });
@@ -57,7 +56,7 @@ const Preloader = ({ children }: PreloaderProps): ReactElement => {
       },
       { 
         opacity: 1, 
-        duration: 0.45, 
+        duration: 0.5, 
         stagger: 0.15,
         ease: 'power3.inOut' 
       });

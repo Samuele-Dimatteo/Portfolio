@@ -3,7 +3,7 @@
 import { ReactElement, useRef } from 'react';
 import { ShaderMaterial, Color } from 'three';
 import { shaderMaterial } from '@react-three/drei';
-import { Canvas, extend, useFrame } from '@react-three/fiber';
+import { Canvas, extend, useFrame, useThree } from '@react-three/fiber';
 import vertexShader from './shaders/vertex.glsl';
 import fragmentShader from './shaders/fragment.glsl';
 
@@ -28,6 +28,8 @@ extend({ NoiseyMaterial });
 
 const NoiseyEffect = (): ReactElement => {
   const materialRef = useRef<ShaderMaterial>(null);
+  const { viewport } = useThree();
+  
 
   useFrame(() => {
     if (materialRef.current) {
@@ -37,7 +39,7 @@ const NoiseyEffect = (): ReactElement => {
 
   return (
     <mesh>
-      <planeGeometry args={[20, 10, 100, 100]} />
+      <planeGeometry args={[viewport.width * 1.25, viewport.height * 1.25, 100, 100]} />
       <noiseyMaterial ref={materialRef} attach='material' />
     </mesh>
   );
@@ -45,7 +47,7 @@ const NoiseyEffect = (): ReactElement => {
 
 const NoiseyBackground = (): ReactElement => {
   return (
-    <div className='absolute left-0 -z-[1] w-full h-full'>
+    <div className='absolute left-0 top-0 -z-[1] w-full h-full'>
       <Canvas>
         <NoiseyEffect />
       </Canvas>

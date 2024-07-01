@@ -7,5 +7,5 @@
 }
 
 body {
-  @apply mx-auto w-full max-w-[85%] bg-secondary;
+  @apply mx-auto w-full max-w-[85%] bg-secondary overflow-hidden;
 }

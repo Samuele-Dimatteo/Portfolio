@@ -7,8 +7,8 @@ const Main = (): ReactElement => {
   return (
     <main className=''>
       <HeroSection />
-      <AboutSection />
-      <WorkSection />
+      {/* <AboutSection /> */}
+      {/* <WorkSection /> */}
     </main>
   );
 };
